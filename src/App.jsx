@@ -12,8 +12,8 @@ function App() {
     <>
       <GlobalStyle />
       <StyledApp>
-        <Heading as='h1'>Hello World!</Heading>
-        <Heading as='h2'>Hello World!</Heading>
+        <Heading as='h1' color="green">Hello World!</Heading>
+        <Heading as='h2' color="blue">Hello World!</Heading>
         <Heading as='h3'>Hello World!</Heading>
         <Button onClick={() => alert("this is alert")}>check in</Button>
       </StyledApp>
