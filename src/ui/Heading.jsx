@@ -20,4 +20,8 @@ ${props => props.as === 'h3' && css`
 `}
 `;
 
+Heading.defaultProps = {
+    color: "green"
+}
+
 export default Heading;
