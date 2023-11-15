@@ -23,8 +23,8 @@ function App() {
 
           <Row type="horizontal">
             <Row type="vertical">
-              <Button onClick={() => alert("this is alert")}>check in</Button>
-              <Button onClick={() => alert("this is alert")}>check out</Button>
+              <Button size="medium" variation="primary" onClick={() => alert("this is alert")}>check in</Button>
+              <Button size="large" variation="danger" onClick={() => alert("this is alert")}>check out</Button>
             </Row>
 
             <Row type="vertical">

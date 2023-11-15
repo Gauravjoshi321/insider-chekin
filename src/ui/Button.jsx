@@ -58,6 +58,9 @@ const Button = styled.button`
   &:hover {
     background-color: var(--color-brand-700)
     }
+
+    ${props => sizes[props.size]};
+    ${props => variations[props.variation]};
 `;
 
 export default Button;
