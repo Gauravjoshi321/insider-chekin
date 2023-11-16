@@ -4,6 +4,7 @@ const Row = styled.div`
 ${props => props.type === 'horizontal' && css`
   display: flex;
   gap: 20px;
+  justify-content: space-between;
 `}
 
 ${props => props.type === 'vertical' && css`
