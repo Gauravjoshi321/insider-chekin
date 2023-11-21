@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import GlobalStyle from "./styles/GlobalStyle";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import Dashboard from "./pages/Dashboard"
 import Bookings from "./pages/Bookings"
@@ -10,8 +11,9 @@ import Account from "./pages/Account"
 import Login from "./pages/Login"
 import PageNotFound from "./pages/PageNotFound"
 
+import GlobalStyle from "./styles/GlobalStyle";
 import AppLayout from "./ui/AppLayout"
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,6 +26,7 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
 
       <GlobalStyle />
       <BrowserRouter>
