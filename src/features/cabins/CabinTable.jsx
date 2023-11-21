@@ -26,7 +26,7 @@ const TableHeader = styled.header`
 
 function CabinTable() {
   return (
-    <div></div>
+    <div>Table</div>
   )
 }
 
