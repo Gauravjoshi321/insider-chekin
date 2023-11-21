@@ -29,10 +29,12 @@ const TableHeader = styled.header`
 
 function CabinTable() {
 
-  useQuery({
+  const query = useQuery({
     queryKey: ["cabin"],
     queryFn: getCabins,
   })
+
+  console.log(query);
 
   return (
     <Table role="table">
