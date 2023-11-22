@@ -55,7 +55,8 @@ function CabinRow({ cabin }) {
       queryClient.invalidateQueries({
         queryKey: ["cabins"]
       })
-    }
+    },
+    onError: (err) => alert(err.message),
   });
 
 
