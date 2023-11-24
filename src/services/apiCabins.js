@@ -13,13 +13,11 @@ export async function getCabins() {
   return data;
 }
 
-export async function createCabin() {
+export async function createCabin(cabinData) {
 
   const { data, error } = await supabase
     .from('cabins')
-    .insert([
-      { some_column: 'someValue', other_column: 'otherValue' },
-    ])
+    .insert([cabinData])
     .select()
 
   if (error) {
@@ -28,7 +26,6 @@ export async function createCabin() {
   }
 
   return data;
-
 }
 
 export async function deleteCabin(id) {
