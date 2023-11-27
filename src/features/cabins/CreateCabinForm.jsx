@@ -92,7 +92,8 @@ function CreateCabinForm() {
           id="name"
           {...register("name", {
             required: "This field is required."
-          })} />
+          })}
+        />
 
         {errors?.name?.message && <Error>{errors.name.message}</Error>}
       </FormRow>
@@ -108,7 +109,8 @@ function CreateCabinForm() {
               value: 1,
               message: "Max capacity can be minimum 1."
             }
-          })} />
+          })}
+        />
 
         {errors?.maxCapacity?.message && <Error>{errors.maxCapacity.message}</Error>}
       </FormRow>
@@ -120,7 +122,8 @@ function CreateCabinForm() {
           id="regularPrice"
           {...register("regularPrice", {
             required: "This field is required."
-          })} />
+          })}
+        />
 
         {errors?.regularPrice?.message && <Error>{errors.regularPrice.message}</Error>}
       </FormRow>
@@ -134,7 +137,8 @@ function CreateCabinForm() {
           {...register("discount", {
             required: "This field is required.",
             validate: (value) => value <= getValues().regularPrice || "Discount should be lees than or equals to the regular price."
-          })} />
+          })}
+        />
 
         {errors?.discount?.message && <Error>{errors.discount.message}</Error>}
       </FormRow>
@@ -145,14 +149,21 @@ function CreateCabinForm() {
           type="number"
           id="description"
           defaultValue=""
-          {...register("description", { required: "This field is required." })} />
+          {...register("description", { required: "This field is required." })}
+        />
 
         {errors?.description?.message && <Error>{errors.description.message}</Error>}
       </FormRow>
 
       <FormRow>
         <Label htmlFor="image">Cabin photo</Label>
-        <FileInput id="image" accept="image/*" />
+        <FileInput
+          id="image"
+          accept="image/*"
+          {...register("image", { required: "This field is required." })}
+        />
+
+        {errors?.image?.message && <Error>{errors.image.message}</Error>}
       </FormRow>
 
       <FormRow>
