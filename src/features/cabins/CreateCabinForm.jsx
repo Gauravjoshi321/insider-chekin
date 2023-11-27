@@ -60,7 +60,7 @@ function CreateCabinForm() {
     mutationFn: createCabin,
 
     onSuccess: () => {
-      toast.success("New cabin create");
+      toast.success("New cabin created.");
       queryClient.invalidateQueries({
         queryKey: ["cabins"]
       });
@@ -93,6 +93,8 @@ function CreateCabinForm() {
           {...register("name", {
             required: "This field is required."
           })} />
+
+        {errors?.name?.message && <Error>{errors.name.message}</Error>}
       </FormRow>
 
       <FormRow>
@@ -107,6 +109,8 @@ function CreateCabinForm() {
               message: "Max capacity can be minimum 1."
             }
           })} />
+
+        {errors?.maxCapacity?.message && <Error>{errors.maxCapacity.message}</Error>}
       </FormRow>
 
       <FormRow>
@@ -117,6 +121,8 @@ function CreateCabinForm() {
           {...register("regularPrice", {
             required: "This field is required."
           })} />
+
+        {errors?.regularPrice?.message && <Error>{errors.regularPrice.message}</Error>}
       </FormRow>
 
       <FormRow>
@@ -129,6 +135,8 @@ function CreateCabinForm() {
             required: "This field is required.",
             validate: (value) => value <= getValues().regularPrice || "Discount should be lees than or equals to the regular price."
           })} />
+
+        {errors?.discount?.message && <Error>{errors.discount.message}</Error>}
       </FormRow>
 
       <FormRow>
@@ -138,6 +146,8 @@ function CreateCabinForm() {
           id="description"
           defaultValue=""
           {...register("description", { required: "This field is required." })} />
+
+        {errors?.description?.message && <Error>{errors.description.message}</Error>}
       </FormRow>
 
       <FormRow>
