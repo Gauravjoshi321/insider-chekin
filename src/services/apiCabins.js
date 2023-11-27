@@ -27,7 +27,7 @@ export async function createCabin(cabinData) {
     .select()
 
   if (error) {
-    console.log(error);
+    console.error(error);
     throw new Error("Cabins could not be created");
   }
 
