@@ -7,7 +7,7 @@ import FileInput from "../../ui/FileInput";
 import Textarea from "../../ui/Textarea";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createCabin } from "../../services/apiCabins";
+import { createEditCabin } from "../../services/apiCabins";
 import toast from "react-hot-toast";
 
 const FormRow = styled.div`
@@ -59,8 +59,23 @@ function CreateCabinForm({ cabinEdit = {} }) {
   const queryClient = useQueryClient();
 
   //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-  const { mutate, isLoading: isCreating } = useMutation({
-    mutationFn: createCabin,
+  const { mutate: createMutate, isLoading: isCreating } = useMutation({
+    mutationFn: createEditCabin,
+
+    onSuccess: () => {
+      toast.success("New cabin created.");
+      queryClient.invalidateQueries({
+        queryKey: ["cabins"]
+      });
+      reset();
+    },
+
+    onError: (err) => {
+      toast.error(err.message);
+    }
+  })
+  const { mutate: editMutate, isLoading: isEditing } = useMutation({
+    mutationFn: createEditCabin,
 
     onSuccess: () => {
       toast.success("New cabin created.");
@@ -77,7 +92,10 @@ function CreateCabinForm({ cabinEdit = {} }) {
 
   //---------------------------------
   function onSubmit(data) {
-    mutate({ ...data, image: data.image[0] });
+    console.log(data);
+    // mutate({ ...data, image: data.image[0] });
+
+    (data.image ===)
   }
 
   //---------------------------------
@@ -170,7 +188,9 @@ function CreateCabinForm({ cabinEdit = {} }) {
           id="image"
           accept="image/*"
           disabled={isCreating}
-          {...register("image", { required: isEditSession ? false : "This field is required." })}
+          {...register("image", {
+            required: isEditSession ? false : "This field is required"
+          })}
         />
 
         {errors?.image?.message && <Error>{errors.image.message}</Error>}
