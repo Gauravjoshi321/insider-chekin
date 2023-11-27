@@ -47,12 +47,16 @@ const Error = styled.span`
 `;
 
 
-function CreateCabinForm() {
+function CreateCabinForm({ cabinEdit = {} }) {
+  const { id: editId, ...editValues } = cabinEdit;
+  const isEditSession = Boolean(editId);
+
+  const { register, handleSubmit, reset, getValues, formState } = useForm({
+    defaultValues: isEditSession ? editValues : {}
+  });
+  const { errors } = formState;
 
   const queryClient = useQueryClient();
-
-  const { register, handleSubmit, reset, getValues, formState } = useForm();
-  const { errors } = formState;
 
   //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
   const { mutate, isLoading: isCreating } = useMutation({
@@ -77,12 +81,13 @@ function CreateCabinForm() {
   }
 
   //---------------------------------
-  function onError(error) {
-    // console.log(error);
-  }
+  // function onError(error) {
+  //   // console.log(error);
+  // }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit, onError)}>
+    <Form onSubmit={handleSubmit(onSubmit)} >
+      {/* <Form Form onSubmit={handleSubmit(onSubmit, Error)} > */}
 
       <FormRow>
         <Label htmlFor="name">Cabin name</Label>
@@ -165,7 +170,7 @@ function CreateCabinForm() {
           id="image"
           accept="image/*"
           disabled={isCreating}
-          {...register("image", { required: "This field is required." })}
+          {...register("image", { required: isEditSession ? false : "This field is required." })}
         />
 
         {errors?.image?.message && <Error>{errors.image.message}</Error>}
@@ -176,9 +181,9 @@ function CreateCabinForm() {
         <Button variation="secondary" type="reset">
           Cancel
         </Button>
-        <Button disabled={isCreating}>Edit cabin</Button>
+        <Button disabled={isCreating}>{isEditSession ? "Edit cabin" : "Add cabin"}</Button>
       </FormRow>
-    </Form>
+    </Form >
   );
 }
 
