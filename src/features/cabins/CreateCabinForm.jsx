@@ -92,7 +92,10 @@ function CreateCabinForm({ cabinEdit = {} }) {
   function onSubmit(data) {
     const image = typeof data.image === "string" ? data.image : data.image[0];
 
+    // Contains image from url
     if (isEditSession) editMutate({ newCabinData: { ...data, image }, id: editId });
+
+    // Contains image from our device
     else createMutate({ ...data, image });
   }
 
@@ -100,6 +103,8 @@ function CreateCabinForm({ cabinEdit = {} }) {
   // function onError(error) {
   //   // console.log(error);
   // }
+
+  const isWorking = isCreating || isEditing;
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)} >
@@ -110,7 +115,7 @@ function CreateCabinForm({ cabinEdit = {} }) {
         <Input
           type="text"
           id="name"
-          disabled={isCreating}
+          disabled={isWorking}
           {...register("name", {
             required: "This field is required."
           })}
@@ -124,7 +129,7 @@ function CreateCabinForm({ cabinEdit = {} }) {
         <Input
           type="number"
           id="maxCapacity"
-          disabled={isCreating}
+          disabled={isWorking}
           {...register("maxCapacity", {
             required: "This field is required.",
             min: {
@@ -142,7 +147,7 @@ function CreateCabinForm({ cabinEdit = {} }) {
         <Input
           type="number"
           id="regularPrice"
-          disabled={isCreating}
+          disabled={isWorking}
           {...register("regularPrice", {
             required: "This field is required."
           })}
@@ -157,7 +162,7 @@ function CreateCabinForm({ cabinEdit = {} }) {
           type="number"
           id="discount"
           defaultValue={0}
-          disabled={isCreating}
+          disabled={isWorking}
           {...register("discount", {
             required: "This field is required.",
             validate: (value) => +value <= +getValues().regularPrice || "Discount should be lees than or equals to the regular price."
@@ -173,7 +178,7 @@ function CreateCabinForm({ cabinEdit = {} }) {
           type="number"
           id="description"
           defaultValue=""
-          disabled={isCreating}
+          disabled={isWorking}
           {...register("description", { required: "This field is required." })}
         />
 
@@ -185,7 +190,7 @@ function CreateCabinForm({ cabinEdit = {} }) {
         <FileInput
           id="image"
           accept="image/*"
-          disabled={isCreating}
+          disabled={isWorking}
           {...register("image", {
             required: isEditSession ? false : "This field is required"
           })}
@@ -199,7 +204,7 @@ function CreateCabinForm({ cabinEdit = {} }) {
         <Button variation="secondary" type="reset">
           Cancel
         </Button>
-        <Button disabled={isCreating}>{isEditSession ? "Edit cabin" : "Add cabin"}</Button>
+        <Button disabled={isWorking}>{isEditSession ? "Edit cabin" : "Add cabin"}</Button>
       </FormRow>
     </Form >
   );
