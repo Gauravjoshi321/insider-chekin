@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 
 import CabinRow from "./CabinRow";
 import Spinner from "../../ui/Spinner";
-import useReadCabin from "./useReadCabin";
+import useReadCabins from "./useReadCabins";
 
 const Table = styled.div`
   border: 1px solid var(--color-grey-200);
@@ -31,7 +31,7 @@ const TableHeader = styled.header`
 
 function CabinTable() {
 
-  const { cabins, error, isLoading } = useReadCabin();
+  const { cabins, error, isLoading } = useReadCabins();
 
   if (isLoading) return <Spinner />;
   if (error) return toast.error("Could not find the data.");
