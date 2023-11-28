@@ -10,6 +10,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createEditCabin } from "../../services/apiCabins";
 import toast from "react-hot-toast";
 import useCreateCabin from "./useCreateCabin";
+import useEditCabin from "./useEditCabin";
 
 const FormRow = styled.div`
   display: grid;
@@ -51,6 +52,7 @@ const Error = styled.span`
 function CreateCabinForm({ cabinEdit = {} }) {
 
   const { createMutate, isCreating } = useCreateCabin();
+  const { editMutate, isEditing } = useEditCabin();
 
   const { id: editId, ...editValues } = cabinEdit;
   const isEditSession = Boolean(editId);
@@ -63,35 +65,32 @@ function CreateCabinForm({ cabinEdit = {} }) {
   } = useForm({ defaultValues: isEditSession ? editValues : {} });
   const { errors } = formState;
 
-  const { mutate: editMutate, isLoading: isEditing } = useMutation({
-    mutationFn: ({ newCabinData, id }) => createEditCabin(newCabinData, id),
-    onSuccess: () => {
-      toast.success("Cabin has edited successfuly.");
-      queryClient.invalidateQueries({
-        queryKey: ["cabins"]
-      });
-      reset();
-    },
-    onError: (err) => {
-      toast.error(err.message);
-    }
-  })
 
   //---------------------------------
   function onSubmit(data) {
     const image = typeof data.image === "string" ? data.image : data.image[0];
 
     // Contains image from url
-    if (isEditSession) editMutate({ newCabinData: { ...data, image }, id: editId });
+    if (isEditSession) {
+      editMutate({ newCabinData: { ...data, image }, id: editId }, {
+        onSuccess: (data) => {
+          // This can also access the data returned by the mutate function...
+          console.log(data);
+          reset();
+        }
+      });
+    }
 
     // Contains image from our device
-    else createMutate({ ...data, image }, {
-      onSuccess: (data) => {
-        // This can also access the data returned by the mutate function...
-        console.log(data);
-        reset();
-      }
-    });
+    else {
+      createMutate({ ...data, image }, {
+        onSuccess: (data) => {
+          // This can also access the data returned by the mutate function...
+          console.log(data);
+          reset();
+        }
+      });
+    }
   }
 
   // function onError(error) {

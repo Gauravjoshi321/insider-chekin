@@ -8,7 +8,7 @@ export default function useCreateCabin() {
   const { mutate: createMutate, isLoading: isCreating } = useMutation({
     mutationFn: createEditCabin,
 
-    // Can also use this "onSuccess" property where we will call this mutation function---
+    // Can also use this "onSuccess" property where we will call this mutation function---(like here in the form)
     onSuccess: () => {
       toast.success("New cabin created.");
       queryClient.invalidateQueries({
