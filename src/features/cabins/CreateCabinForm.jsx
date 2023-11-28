@@ -1,14 +1,11 @@
 import styled from "styled-components";
+import { useForm } from "react-hook-form";
 
 import Input from "../../ui/Input";
 import Form from "../../ui/Form";
 import Button from "../../ui/Button";
 import FileInput from "../../ui/FileInput";
 import Textarea from "../../ui/Textarea";
-import { useForm } from "react-hook-form";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createEditCabin } from "../../services/apiCabins";
-import toast from "react-hot-toast";
 import useCreateCabin from "./useCreateCabin";
 import useEditCabin from "./useEditCabin";
 
@@ -74,7 +71,7 @@ function CreateCabinForm({ cabinEdit = {} }) {
     if (isEditSession) {
       editMutate({ newCabinData: { ...data, image }, id: editId }, {
         onSuccess: (data) => {
-          // This can also access the data returned by the mutate function...
+          // This can also access the data returned by the funtion (dealing with api) called by mutate function...
           console.log(data);
           reset();
         }
