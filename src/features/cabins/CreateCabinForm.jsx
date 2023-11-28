@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createEditCabin } from "../../services/apiCabins";
 import toast from "react-hot-toast";
+import useCreateCabin from "./useCreateCabin";
 
 const FormRow = styled.div`
   display: grid;
@@ -48,32 +49,20 @@ const Error = styled.span`
 
 
 function CreateCabinForm({ cabinEdit = {} }) {
+
+  const { createMutate, isCreating } = useCreateCabin();
+
   const { id: editId, ...editValues } = cabinEdit;
   const isEditSession = Boolean(editId);
-
-  const { register, handleSubmit, reset, getValues, formState } = useForm({
-    defaultValues: isEditSession ? editValues : {}
-  });
+  const {
+    register,
+    handleSubmit,
+    reset,
+    getValues,
+    formState
+  } = useForm({ defaultValues: isEditSession ? editValues : {} });
   const { errors } = formState;
 
-  const queryClient = useQueryClient();
-
-  //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-  const { mutate: createMutate, isLoading: isCreating } = useMutation({
-    mutationFn: createEditCabin,
-
-    onSuccess: () => {
-      toast.success("New cabin created.");
-      queryClient.invalidateQueries({
-        queryKey: ["cabins"]
-      });
-      reset();
-    },
-
-    onError: (err) => {
-      toast.error(err.message);
-    }
-  })
   const { mutate: editMutate, isLoading: isEditing } = useMutation({
     mutationFn: ({ newCabinData, id }) => createEditCabin(newCabinData, id),
     onSuccess: () => {
@@ -96,10 +85,15 @@ function CreateCabinForm({ cabinEdit = {} }) {
     if (isEditSession) editMutate({ newCabinData: { ...data, image }, id: editId });
 
     // Contains image from our device
-    else createMutate({ ...data, image });
+    else createMutate({ ...data, image }, {
+      onSuccess: (data) => {
+        // This can also access the data returned by the mutate function...
+        console.log(data);
+        reset();
+      }
+    });
   }
 
-  //---------------------------------
   // function onError(error) {
   //   // console.log(error);
   // }
@@ -108,7 +102,7 @@ function CreateCabinForm({ cabinEdit = {} }) {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)} >
-      {/* <Form Form onSubmit={handleSubmit(onSubmit, Error)} > */}
+      {/* <Form Form onSubmit={handleSubmit(onSubmit, onError)} > */}
 
       <FormRow>
         <Label htmlFor="name">Cabin name</Label>
