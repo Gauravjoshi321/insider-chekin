@@ -10,7 +10,7 @@ ${props => props.type === 'horizontal' && css`
 ${props => props.type === 'vertical' && css`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 `}
 `;
 

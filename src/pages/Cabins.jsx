@@ -5,7 +5,6 @@ import AddCabin from "../features/cabins/AddCabin";
 
 function Cabins() {
 
-
   return (
     <>
       <Row type="horizontal">
