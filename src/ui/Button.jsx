@@ -53,6 +53,7 @@ const Button = styled.button`
   color: var(--color-brand-50);
   background-color: var(--color-brand-500);
   border: none;
+  border-radius: 4px;
   cursor: pointer;
 
   &:hover {

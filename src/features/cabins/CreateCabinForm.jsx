@@ -73,7 +73,7 @@ function CreateCabinForm({ cabinEdit = {}, onCloseModal }) {
   const isWorking = isCreating || isEditing;
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)} >
+    <Form onSubmit={handleSubmit(onSubmit)} type={onCloseModal ? "modal" : "regular"}>
       {/* <Form Form onSubmit={handleSubmit(onSubmit, onError)} > */}
 
       <FormRow>
