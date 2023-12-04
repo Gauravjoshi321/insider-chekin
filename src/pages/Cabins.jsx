@@ -1,10 +1,7 @@
-import { useState } from "react";
 import CabinTable from "../features/cabins/CabinTable";
-import Button from "../ui/Button";
 import Heading from "../ui/Heading";
 import Row from "../ui/Row";
-import CreateCabinForm from "./../features/cabins/CreateCabinForm"
-import Modal from "../ui/Modal";
+import AddCabin from "../features/cabins/AddCabin";
 
 function Cabins() {
 
@@ -16,12 +13,10 @@ function Cabins() {
         <p>Filter / Sort</p>
       </Row>
 
-      <Row>
+      <Row type="vertical">
         <CabinTable />
+        <AddCabin />
       </Row>
-
-      {<Modal></Modal>}
-
 
     </>
   );

@@ -20,7 +20,7 @@ const Error = styled.span`
 `;
 
 
-function CreateCabinForm({ cabinEdit = {} }) {
+function CreateCabinForm({ cabinEdit = {}, onCloseModal }) {
 
   const { createMutate, isCreating } = useCreateCabin();
   const { editMutate, isEditing } = useEditCabin();
@@ -48,6 +48,7 @@ function CreateCabinForm({ cabinEdit = {} }) {
           // This can also access the data returned by the funtion (dealing with api) called by mutate function...
           console.log(data);
           reset();
+          onCloseModal();
         }
       });
     }
@@ -59,6 +60,7 @@ function CreateCabinForm({ cabinEdit = {} }) {
           // This can also access the data returned by the mutate function...
           console.log(data);
           reset();
+          onCloseModal();
         }
       });
     }
@@ -165,7 +167,7 @@ function CreateCabinForm({ cabinEdit = {} }) {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
+        <Button variation="secondary" type="reset" onClick={() => onCloseModal?.()}>
           Cancel
         </Button>
         <Button disabled={isWorking}>{isEditSession ? "Edit cabin" : "Add cabin"}</Button>
