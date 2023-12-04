@@ -20,7 +20,7 @@ const Error = styled.span`
 `;
 
 
-function CreateCabinForm({ cabinEdit = {}, onCloseModal }) {
+function CreateCabinForm({ cabinEdit = {}, onCloseModal, onCloseEditModal }) {
 
   const { createMutate, isCreating } = useCreateCabin();
   const { editMutate, isEditing } = useEditCabin();
@@ -41,14 +41,14 @@ function CreateCabinForm({ cabinEdit = {}, onCloseModal }) {
   function onSubmit(data) {
     const image = typeof data.image === "string" ? data.image : data.image[0];
 
-    // Contains image from url
+    // Contains image from API already (url)
     if (isEditSession) {
       editMutate({ newCabinData: { ...data, image }, id: editId }, {
         onSuccess: (data) => {
           // This can also access the data returned by the funtion (dealing with api) called by mutate function...
           console.log(data);
           reset();
-          onCloseModal();
+          onCloseEditModal?.();
         }
       });
     }
@@ -60,7 +60,7 @@ function CreateCabinForm({ cabinEdit = {}, onCloseModal }) {
           // This can also access the data returned by the mutate function...
           console.log(data);
           reset();
-          onCloseModal();
+          onCloseModal?.();
         }
       });
     }

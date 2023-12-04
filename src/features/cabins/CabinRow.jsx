@@ -82,7 +82,7 @@ function CabinRow({ cabin }) {
         </div>
       </TableRow>
 
-      {showEditForm && <CreateCabinForm cabinEdit={cabin} />}
+      {showEditForm && <CreateCabinForm cabinEdit={cabin} onCloseEditModal={() => setShowEditForm(showEditForm => !showEditForm)} />}
     </>
   )
 }
