@@ -2,8 +2,6 @@ import CabinTable from "../features/cabins/CabinTable";
 import Heading from "../ui/Heading";
 import Row from "../ui/Row";
 import AddCabin from "../features/cabins/AddCabin";
-import CreateCabinForm from "../features/cabins/CreateCabinForm";
-
 
 function Cabins() {
 
@@ -17,9 +15,7 @@ function Cabins() {
       <Row type="vertical">
         <CabinTable />
 
-        <AddCabin opens="cabin-form" name="cabin-form" >
-          <CreateCabinForm />
-        </AddCabin>
+        <AddCabin />
 
         {/* <AddCabin opens="table" name="table" >
           <CabinTable />

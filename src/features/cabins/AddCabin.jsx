@@ -1,17 +1,18 @@
 import Button from "../../ui/Button";
 import Modal from "../../ui/Modal";
+import CreateCabinForm from "./CreateCabinForm";
 
 
-function AddCabin({ opens, name, children }) {
+function AddCabin() {
   return (
     <Modal>
 
-      <Modal.Open opens={opens}>
+      <Modal.Open opens="cabin-form">
         <Button>Add new Cabin</Button>
       </Modal.Open>
 
-      <Modal.Window name={name}>
-        {children}
+      <Modal.Window name="cabin-form">
+        <CreateCabinForm />
       </Modal.Window>
 
     </Modal>
