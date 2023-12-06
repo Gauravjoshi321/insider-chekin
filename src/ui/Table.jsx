@@ -65,7 +65,9 @@ const TableContext = createContext();
 function Table({ columns, children }) {
   return (
     <TableContext.Provider value={{ columns }}>
-      {children}
+      <StyledTable>
+        {children}
+      </StyledTable>
     </TableContext.Provider>
   )
 }
