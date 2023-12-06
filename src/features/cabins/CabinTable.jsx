@@ -37,7 +37,6 @@ function CabinTable() {
   if (isLoading) return <Spinner />;
   if (error) return toast.error("Could not find the data.");
 
-
   return (
     <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
 
