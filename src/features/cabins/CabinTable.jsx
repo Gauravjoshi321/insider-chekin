@@ -4,15 +4,16 @@ import toast from "react-hot-toast";
 import CabinRow from "./CabinRow";
 import Spinner from "../../ui/Spinner";
 import useReadCabins from "./useReadCabins";
+import Table from "../../ui/Table";
 
-const Table = styled.div`
-  border: 1px solid var(--color-grey-200);
+// const Table = styled.div`
+//   border: 1px solid var(--color-grey-200);
 
-  font-size: 1.4rem;
-  background-color: var(--color-grey-0);
-  border-radius: 7px;
-  overflow: hidden;
-`;
+//   font-size: 1.4rem;
+//   background-color: var(--color-grey-0);
+//   border-radius: 7px;
+//   overflow: hidden;
+// `;
 
 const TableHeader = styled.header`
   display: grid;
@@ -38,16 +39,16 @@ function CabinTable() {
 
 
   return (
-    <Table role="table">
+    <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
 
-      <TableHeader role="row">
+      <Table.Header role="row">
         <div></div>
         <div>cabin</div>
         <div>capacity</div>
         <div>price</div>
         <div>discount</div>
         <div></div>
-      </TableHeader>
+      </Table.Header>
 
       {cabins.map(cabin => <CabinRow cabin={cabin} key={cabin.id} />)}
 
