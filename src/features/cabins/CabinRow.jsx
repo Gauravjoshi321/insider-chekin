@@ -89,6 +89,7 @@ function CabinRow({ cabin }) {
               <HiPencil />
             </button>
           </Modal.Open>
+
           <Modal.Window name="edit">
             <CreateCabinForm />
           </Modal.Window>
@@ -98,6 +99,7 @@ function CabinRow({ cabin }) {
               <HiTrash />
             </button>
           </Modal.Open>
+
           <Modal.Window name="delete">
             <ConfirmDelete
               resourceName="cabin"
