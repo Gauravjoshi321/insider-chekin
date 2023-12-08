@@ -5,6 +5,7 @@ import CabinRow from "./CabinRow";
 import Spinner from "../../ui/Spinner";
 import useReadCabins from "./useReadCabins";
 import Table from "../../ui/Table";
+import Menus from "../../ui/Menus";
 
 // const Table = styled.div`
 //   border: 1px solid var(--color-grey-200);
@@ -38,23 +39,25 @@ function CabinTable() {
   if (error) return toast.error("Could not find the data.");
 
   return (
-    <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
+    <Menus>
+      <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
 
-      <Table.Header role="row">
-        <div></div>
-        <div>cabin</div>
-        <div>capacity</div>
-        <div>price</div>
-        <div>discount</div>
-        <div></div>
-      </Table.Header>
+        <Table.Header role="row">
+          <div></div>
+          <div>cabin</div>
+          <div>capacity</div>
+          <div>price</div>
+          <div>discount</div>
+          <div></div>
+        </Table.Header>
 
-      <Table.Body
-        data={cabins}
-        render={(cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
-      />
+        <Table.Body
+          data={cabins}
+          render={(cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
+        />
 
-    </Table>
+      </Table>
+    </Menus>
   )
 }
 
