@@ -97,7 +97,7 @@ function CabinRow({ cabin }) {
 
 
             <Modal.Window name="edit">
-              <CreateCabinForm />
+              <CreateCabinForm cabinEdit={cabin} onCloseEditModal={close} />
             </Modal.Window>
 
             <Modal.Window name="delete">
@@ -110,16 +110,6 @@ function CabinRow({ cabin }) {
 
           </Menus.Menu>
         </Modal>
-        {/* 
-        <Menus.Menu>
-          <Menus.Toggle id={cabinId} />
-
-          <Menus.List id={cabinId}>
-            <Menus.Button><HiTrash />gaurav</Menus.Button>
-            <Menus.Button><HiTrash />gaurav</Menus.Button>
-            <Menus.Button><HiTrash />gaurav</Menus.Button>
-          </Menus.List>
-        </Menus.Menu> */}
 
       </div>
     </Table.Row >
