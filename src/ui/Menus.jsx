@@ -70,7 +70,31 @@ function Menus({ children }) {
   )
 }
 
-// function 
+function Toggle({ children }) {
+  return (
+    <StyledToggle>
+      {children}
+    </StyledToggle>
+  )
+}
+function List({ children }) {
+  return (
+    <StyledList>
+      {children}
+    </StyledList>
+  )
+}
+function Button({ children }) {
+  return (
+    <StyledButton>
+      {children}
+    </StyledButton>
+  )
+}
+
+Menus.Toggle = Toggle;
+Menus.List = List;
+Menus.Button = Button;
 
 
 export default Menus;
