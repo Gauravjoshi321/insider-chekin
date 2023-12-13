@@ -15,10 +15,16 @@ const StyledSelect = styled.select`
 `;
 
 
-function Select() {
+function Select({ options, value }) {
   return (
-    <StyledSelect>
-      select
+    <StyledSelect type="white" value={value}>
+      {
+        options.map(option => (
+          <option value={option.value} key={option.value}>
+            {option.label}
+          </option>
+        ))
+      }
     </StyledSelect>
   )
 }

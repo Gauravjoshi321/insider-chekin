@@ -1,6 +1,10 @@
-function SortBy() {
+import Select from "./Select";
+
+function SortBy({ options }) {
   return (
-    <div>SortBy</div>
+    <div>
+      <Select options={options} />
+    </div>
   )
 }
 
