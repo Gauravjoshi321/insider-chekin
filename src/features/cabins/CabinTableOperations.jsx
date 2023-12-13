@@ -14,7 +14,7 @@ function CabinTableOperations() {
       ]} />
 
       {/* Sort */}
-      <SortBy paramName="sortBy" options={[
+      <SortBy options={[
         { value: "name-asc", label: "Sort by name(A-Z)" },
         { value: "name-des", label: "Sort by name(Z-A)" },
         { value: "regularPrice-asc", label: "Sort by Price(low first)" },

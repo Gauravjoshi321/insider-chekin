@@ -15,9 +15,9 @@ const StyledSelect = styled.select`
 `;
 
 
-function Select({ options, value }) {
+function Select({ options, type, onChange, paramValue }) {
   return (
-    <StyledSelect type="white" value={value}>
+    <StyledSelect type={type} onChange={onChange} value={paramValue}>
       {
         options.map(option => (
           <option value={option.value} key={option.value}>
