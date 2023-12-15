@@ -17,6 +17,11 @@ export async function getBookings(filterObj, sortBy) {
     ascending: sortBy.value === "asc"
   });
 
+  // Pagination
+  if (page) {
+
+  }
+
   const { data, error, count } = await query;
 
 
