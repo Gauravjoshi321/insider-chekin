@@ -16,10 +16,10 @@ export default function useReadBookings() {
   const [field, direction] = sortParam.split("-");
   const sortBy = { field, direction };
 
-  const { data: bookings, error, isLoading } = useQuery({
+  const { data: { data: bookings, count } = {}, error, isLoading } = useQuery({
     queryKey: ["bookings", filterObj, sortBy],
     queryFn: () => getBookings(filterObj, sortBy),
   })
 
-  return { bookings, error, isLoading };
+  return { bookings, error, isLoading, count };
 }
