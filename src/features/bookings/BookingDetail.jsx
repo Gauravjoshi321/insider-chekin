@@ -30,14 +30,13 @@ function BookingDetail() {
   };
 
   if (isLoading) return <Spinner />;
-  console.log(booking);
-  const { status } = booking;
+  const { status, id: bookingId } = booking;
 
   return (
     <>
       <Row type="horizontal">
         <HeadingGroup>
-          <Heading as="h1">Booking #X</Heading>
+          <Heading as="h1">Booking #{bookingId}</Heading>
           <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
         </HeadingGroup>
         <ButtonText onClick={moveBack}>&larr; Back</ButtonText>
