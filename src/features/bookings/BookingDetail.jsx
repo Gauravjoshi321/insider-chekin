@@ -17,7 +17,7 @@ const HeadingGroup = styled.div`
 `;
 
 function BookingDetail() {
-  const booking = {};
+
   const status = "checked-in";
 
   const moveBack = useMoveBack();
@@ -38,7 +38,7 @@ function BookingDetail() {
         <ButtonText onClick={moveBack}>&larr; Back</ButtonText>
       </Row>
 
-      <BookingDataBox booking={booking} />
+      {/* <BookingDataBox booking={booking} /> */}
 
       <ButtonGroup>
         <Button variation="secondary" onClick={moveBack}>

@@ -8,7 +8,6 @@ export default function useReadBookings() {
 
   const [searchParams] = useSearchParams();
   const queryClient = useQueryClient();
-  console.log(searchParams);
 
   // Filter
   const statusParam = searchParams.get("status");
