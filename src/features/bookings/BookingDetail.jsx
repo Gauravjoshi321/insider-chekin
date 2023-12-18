@@ -10,6 +10,8 @@ import ButtonText from "../../ui/ButtonText";
 
 import { useMoveBack } from "../../hooks/useMoveBack";
 import { useSearchParams } from "react-router-dom";
+import useReadBookingById from "./useReadBookingById";
+import Spinner from "../../ui/Spinner";
 
 const HeadingGroup = styled.div`
   display: flex;
@@ -18,8 +20,7 @@ const HeadingGroup = styled.div`
 `;
 
 function BookingDetail() {
-
-  const status = "checked-in";
+  const { booking, isLoading } = useReadBookingById();
   const moveBack = useMoveBack();
 
   const statusToTagName = {
@@ -27,6 +28,10 @@ function BookingDetail() {
     "checked-in": "green",
     "checked-out": "silver",
   };
+
+  if (isLoading) return <Spinner />;
+  console.log(booking);
+  const { status } = booking;
 
   return (
     <>
@@ -38,7 +43,7 @@ function BookingDetail() {
         <ButtonText onClick={moveBack}>&larr; Back</ButtonText>
       </Row>
 
-      {/* <BookingDataBox booking={booking} /> */}
+      <BookingDataBox booking={booking} />
 
       <ButtonGroup>
         <Button variation="secondary" onClick={moveBack}>
