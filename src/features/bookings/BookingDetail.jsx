@@ -9,6 +9,7 @@ import Button from "../../ui/Button";
 import ButtonText from "../../ui/ButtonText";
 
 import { useMoveBack } from "../../hooks/useMoveBack";
+import { useSearchParams } from "react-router-dom";
 
 const HeadingGroup = styled.div`
   display: flex;
@@ -19,7 +20,6 @@ const HeadingGroup = styled.div`
 function BookingDetail() {
 
   const status = "checked-in";
-
   const moveBack = useMoveBack();
 
   const statusToTagName = {
