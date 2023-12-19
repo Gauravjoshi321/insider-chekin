@@ -13,8 +13,8 @@ import Spinner from "../../ui/Spinner";
 import useReadBookingById from "../bookings/useReadBookingById";
 import { formatCurrency } from "../../utils/helpers";
 import { useEffect, useState } from "react";
-import Checkin from "./useCheckin";
 import useCheckin from "./useCheckin";
+import { useSettings } from "../settings/useGetSettings";
 
 const Box = styled.div`
   /* Box */
@@ -26,7 +26,10 @@ const Box = styled.div`
 
 function CheckinBooking() {
   const [confirmPaid, setConfirmPaid] = useState(false);
+  const [addBreakfast, setAddBreakfast] = useState(false);
+
   const { booking, isLoading } = useReadBookingById();
+  const { } = useSettings();
 
   useEffect(function () {
     setConfirmPaid(booking?.isPaid ?? false)
@@ -60,6 +63,18 @@ function CheckinBooking() {
 
       <BookingDataBox booking={booking} />
 
+      <Box>
+        <Checkbox
+          checked={addBreakfast}
+          onChange={() => {
+            setAddBreakfast((addBreakfast) => !addBreakfast);
+            setConfirmPaid(false);
+          }}
+          id="breakfast"
+        >
+          Want to add breakfast for X ?
+        </Checkbox>
+      </Box >
       <Box>
         <Checkbox
           checked={confirmPaid}
