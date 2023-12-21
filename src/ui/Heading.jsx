@@ -18,6 +18,12 @@ ${props => props.as === 'h3' && css`
     font - weight: 100;
     color: ${props.color}
 `}
+${props => props.as === 'h4' && css`
+    font-size: 25px;
+    font - weight: 600;
+    color: ${props.color};
+    text-align:center;
+`}
 `;
 
 Heading.defaultProps = {
