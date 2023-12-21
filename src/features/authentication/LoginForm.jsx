@@ -3,12 +3,19 @@ import Button from "../../ui/Button";
 import Form from "../../ui/Form";
 import Input from "../../ui/Input";
 import FormRowVertical from "../../ui/FormRowVertical";
+import { login } from "../../services/apiAuthentication";
 
 function LoginForm() {
   const [email, setEmail] = useState("gaurav@example.com");
   const [password, setPassword] = useState("gaurav");
 
-  function handleSubmit() { }
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (!email || !password) return;
+
+    login({ email, password });
+  }
 
   return (
     <Form onSubmit={handleSubmit}>
