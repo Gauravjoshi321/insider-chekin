@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 export function useLogin() {
   const navigate = useNavigate();
 
-  const { login, isLoading } = useMutation({
+  const { mutate: login, isLoading: isLoggingIn } = useMutation({
     mutationFn: ({ email, password }) => loginApi({ email, password }),
     onSuccess: (user) => {
       console.log(user);
@@ -18,5 +18,5 @@ export function useLogin() {
     }
   })
 
-  return { login, isLoading };
+  return { login, isLoggingIn };
 }
