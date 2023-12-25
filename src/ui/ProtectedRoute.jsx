@@ -31,7 +31,6 @@ function ProtectedRoute({ children }) {
     </FullPage>
   )
 
-
   // // 4. If Authenticated then return the children
   if (isAuthenticated)
     return children;
