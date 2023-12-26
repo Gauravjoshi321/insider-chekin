@@ -10,8 +10,8 @@ function SignupForm() {
   const { register, formState, getValues, handleSubmit } = useForm();
   const { errors } = formState;
 
-  function onSubmit(data) {
-    console.log(data);
+  function onSubmit({ fullName, email, password }) {
+
   }
 
   return (
