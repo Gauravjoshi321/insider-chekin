@@ -28,7 +28,20 @@ function UpdateUserDataForm() {
 
     if (!fullName) return;
 
-    updateUser({ fullName, avatar })
+    updateUser(
+      { fullName, avatar },
+      {
+        onSuccess: () => {
+          setAvatar(null)
+          e.target.reset()
+        }
+      }
+    )
+  }
+
+  function handleCancel() {
+    setFullName(currentFullName);
+    setAvatar(null);
   }
 
   return (
@@ -58,6 +71,7 @@ function UpdateUserDataForm() {
           type="reset"
           variation="secondary"
           disabled={isUpdating}
+          onClick={handleCancel}
         >
           Cancel
         </Button>

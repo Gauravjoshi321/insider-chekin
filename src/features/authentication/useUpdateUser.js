@@ -8,7 +8,6 @@ export default function useUpdateUser() {
   const { mutate: updateUser, isLoading: isUpdating } = useMutation({
     mutationFn: UpdateCurrentUser,
 
-    // Can also use this "onSuccess" property where we will call this mutation function---(like here in the form)
     onSuccess: () => {
       toast.success("User details has been updated successfuly.");
       queryClient.invalidateQueries({

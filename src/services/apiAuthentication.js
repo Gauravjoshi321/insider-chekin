@@ -43,9 +43,6 @@ export async function getCurrentUser() {
   // This function getUser() below will actually return only a user who has logged in with its respective supabse client.
   const { data, error } = await supabase.auth.getUser();
 
-  console.log("session:", session);
-  console.log("user:", data);
-
   if (error) throw new Error(error.message);
 
   return data.user;
