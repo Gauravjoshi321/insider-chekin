@@ -1,9 +1,14 @@
-import { createContext, useContext, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useLocalStorageState } from "../hooks/useLocalStorageState";
 
 const DarkModeContext = createContext();
 
 function DarkModeProvider({ children }) {
+  // Don't use the useState hook for the Dark mode or other thing like this because, on refreshing the state will come to its default position like here on refreshing state will become false again and dark mode will turn to light mode.
+  // So that's why we have stored that state in localStorage which will not change on any refresh, only change when you will intentionally remove all data from your browser's local storage.
+
+  // const [isDarkMode, setIsDarkMode] = useState(false);
+
   const [isDarkMode, setIsDarkMode] = useLocalStorageState(false, "isDarkMode");
 
   useEffect(function () {
