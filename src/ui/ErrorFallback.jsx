@@ -3,6 +3,7 @@ import Heading from "./Heading";
 import { Global } from "recharts";
 import GlobalStyle from "../styles/GlobalStyle";
 import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
 const StyledErrorFallback = styled.main`
   height: 100vh;
