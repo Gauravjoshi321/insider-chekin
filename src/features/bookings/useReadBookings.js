@@ -17,6 +17,7 @@ export default function useReadBookings() {
   const sortParam = searchParams.get("sortBy") || "startDate-desc";
   const [field, direction] = sortParam.split("-");
   const sortBy = { field, direction };
+  console.log(sortBy);
 
   // Pagination
   const currentPage = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
