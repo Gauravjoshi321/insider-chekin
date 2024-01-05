@@ -29,12 +29,16 @@ const GlobalStyle = createGlobalStyle`
 
   --color-blue-100: #e0f2fe;
   --color-blue-700: #0369a1;
+
   --color-green-100: #dcfce7;
   --color-green-700: #15803d;
+
   --color-yellow-100: #fef9c3;
   --color-yellow-700: #a16207;
+
   --color-silver-100: #e5e7eb;
   --color-silver-700: #374151;
+
   --color-indigo-100: #e0e7ff;
   --color-indigo-700: #4338ca;
 
@@ -67,12 +71,16 @@ const GlobalStyle = createGlobalStyle`
 
 --color-blue-100: #075985;
 --color-blue-700: #e0f2fe;
+
 --color-green-100: #166534;
 --color-green-700: #dcfce7;
+
 --color-yellow-100: #854d0e;
 --color-yellow-700: #fef9c3;
+
 --color-silver-100: #374151;
 --color-silver-700: #f3f4f6;
+
 --color-indigo-100: #3730a3;
 --color-indigo-700: #e0e7ff;
 
@@ -182,13 +190,6 @@ img {
   /* For dark mode */
   filter: grayscale(var(--image-grayscale)) opacity(var(--image-opacity));
 }
-
-/*
-FOR DARK MODE
-
-
-*/
-
 `
 
 export default GlobalStyle;
