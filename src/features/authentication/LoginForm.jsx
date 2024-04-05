@@ -21,34 +21,38 @@ function LoginForm() {
   }
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <FormRowVertical label="Email address">
-        <Input
-          type="email"
-          id="email"
-          // This makes this form better for password managers
-          autoComplete="username"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          disabled={isLoggingIn}
-        />
-      </FormRowVertical>
-      <FormRowVertical label="Password">
-        <Input
-          type="password"
-          id="password"
-          autoComplete="current-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          disabled={isLoggingIn}
-        />
-      </FormRowVertical>
-      <FormRowVertical>
-        <Button size="large">
-          {isLoggingIn ? <SpinnerMini /> : "Login"}
-        </Button>
-      </FormRowVertical>
-    </Form>
+    <>
+      <Form onSubmit={handleSubmit}>
+        <FormRowVertical label="Email address">
+          <Input
+            type="email"
+            id="email"
+            // This makes this form better for password managers
+            autoComplete="username"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            disabled={isLoggingIn}
+          />
+        </FormRowVertical>
+        <FormRowVertical label="Password">
+          <Input
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            disabled={isLoggingIn}
+          />
+        </FormRowVertical>
+        <FormRowVertical>
+          <Button size="large">
+            {isLoggingIn ? <SpinnerMini /> : "Login"}
+          </Button>
+        </FormRowVertical>
+      </Form>
+
+      <p>Note: If the password or email is incorrect, so it means backend server is paused.</p>
+    </>
   );
 }
 
