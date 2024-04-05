@@ -16,7 +16,8 @@ function Logo() {
 
   return (
     <StyledLogo>
-      <Img src={src} alt="Logo" />
+      {/* <Img src={src} alt="Logo" /> */}
+      <p><b>Insider Checkin</b></p>
     </StyledLogo>
   );
 }
