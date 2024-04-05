@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import BookingDataBox from "./BookingDataBox";
-import Row from "../../ui/Row";
+// import Row from "../../ui/Row";
 import Heading from "../../ui/Heading";
 import Tag from "../../ui/Tag";
 import ButtonGroup from "../../ui/ButtonGroup";
@@ -20,6 +20,21 @@ const HeadingGroup = styled.div`
   gap: 2.4rem;
   align-items: center;
 `;
+
+const Row = styled.div`
+${props => props.type === 'horizontal' && css`
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+`}
+
+${props => props.type === 'vertical' && css`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`}
+`;
+
 
 function BookingDetail() {
   const { booking, isLoading } = useReadBookingById();

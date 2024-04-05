@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import Heading from "../../ui/Heading";
-import Row from "../../ui/Row";
+// import Row from "../../ui/Row";
 import { useTodayActivity } from "./useTodayActivity";
 import Spinner from "../../ui/Spinner";
 import TodayItem from "./TodayItem";
@@ -37,6 +37,20 @@ const NoActivity = styled.p`
   font-size: 1.8rem;
   font-weight: 500;
   margin-top: 0.8rem;
+`;
+
+const Row = styled.div`
+${props => props.type === 'horizontal' && css`
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+`}
+
+${props => props.type === 'vertical' && css`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`}
 `;
 
 function TodayActivity() {
